@@ -18,6 +18,8 @@
             --neon-glow-pink: 0 0 10px var(--secondary), 0 0 20px var(--secondary), 0 0 40px var(--secondary);
             --neon-glow-purple: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 40px var(--accent);
             --whatsapp: #25D366;
+            --code-bg: #1a1a2a;
+            --error: #ff3860;
         }
 
         * {
@@ -224,6 +226,20 @@
             transform: translateY(-5px);
         }
 
+        .btn-code {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: var(--neon-glow-purple);
+        }
+
+        .btn-code:hover {
+            background: var(--accent);
+            color: var(--light);
+            box-shadow: 0 0 30px var(--accent);
+            transform: translateY(-5px);
+        }
+
         /* Section Styling */
         section {
             padding: 8rem 2rem;
@@ -364,6 +380,181 @@
             border-radius: 20px;
             font-size: 0.8rem;
             border: 1px solid var(--primary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Code Viewer Modal */
+        .code-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 16, 0.95);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .code-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 1000px;
+            max-height: 80vh;
+            background: var(--code-bg);
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            box-shadow: var(--neon-glow);
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: rgba(0, 243, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-header h3 {
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .code-tabs {
+            display: flex;
+            background: rgba(0, 243, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .code-tab {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .code-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .code-tab:hover {
+            color: var(--primary);
+            background: rgba(0, 243, 255, 0.05);
+        }
+
+        .code-body {
+            padding: 0;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .code-viewer {
+            display: none;
+            padding: 1.5rem;
+        }
+
+        .code-viewer.active {
+            display: block;
+        }
+
+        .code-text {
+            background: #0a0a1a;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            color: var(--light);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            max-height: 50vh;
+            overflow-y: auto;
+            margin: 0;
+        }
+
+        .code-text::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .code-text::-webkit-scrollbar-track {
+            background: rgba(0, 243, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .code-text::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Error Message Styling */
+        .error-message {
+            text-align: center;
+            padding: 3rem 2rem;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            color: var(--error);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .error-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--error);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 56, 96, 0.5);
+        }
+
+        .error-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
         }
 
         /* Experience Section */
@@ -619,6 +810,11 @@
             .hero h1 {
                 font-size: 3.5rem;
             }
+
+            .code-modal-content {
+                width: 95%;
+                max-height: 90vh;
+            }
         }
 
         @media (max-width: 768px) {
@@ -641,6 +837,23 @@
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .code-tabs {
+                flex-wrap: wrap;
+            }
+
+            .code-tab {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -714,6 +927,7 @@
     <section id="projects">
         <h2 class="section-title">My Projects</h2>
         <div class="projects-grid">
+            <!-- FindnFix Project -->
             <div class="project-card">
                 <div class="project-image">
                     <i class="fas fa-tools" style="font-size: 4rem; color: white; z-index: 1;"></i>
@@ -729,10 +943,12 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn btn-primary">Live Demo</a>
-                        <a href="#" class="btn btn-secondary">Source Code</a>
+                        <button class="btn btn-code" onclick="showCode('findnfix')">View Code</button>
                     </div>
                 </div>
             </div>
+
+            <!-- Sequence Dice Game -->
             <div class="project-card">
                 <div class="project-image">
                     <i class="fas fa-dice" style="font-size: 4rem; color: white; z-index: 1;"></i>
@@ -747,10 +963,12 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn btn-primary">Live Demo</a>
-                        <a href="#" class="btn btn-secondary">Source Code</a>
+                        <button class="btn btn-code" onclick="showCode('sequence')">View Code</button>
                     </div>
                 </div>
             </div>
+
+            <!-- Portfolio Website -->
             <div class="project-card">
                 <div class="project-image">
                     <i class="fas fa-rocket" style="font-size: 4rem; color: white; z-index: 1;"></i>
@@ -766,12 +984,377 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn btn-primary">Live Demo</a>
-                        <a href="#" class="btn btn-secondary">Source Code</a>
+                        <button class="btn btn-code" onclick="showCode('portfolio')">View Code</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Code Viewer Modals -->
+    <!-- FindnFix Error Modal -->
+    <div id="findnfix-code" class="code-modal">
+        <div class="code-modal-content">
+            <div class="code-header">
+                <h3>FindnFix Mobile App - Access Restricted</h3>
+                <button class="close-modal" onclick="closeCodeModal()">&times;</button>
+            </div>
+            <div class="error-message">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2 class="error-title">Oops! Project Under Development</h2>
+                <p class="error-text">
+                    You clicked on an ongoing current project!<br>
+                    The source code for FindnFix will be issued upon request.<br>
+                    In the meantime, feel free to explore the Sequence Dice project code below!
+                </p>
+                <div class="error-actions">
+                    <button class="btn btn-primary" onclick="closeCodeModal()">Close</button>
+                    <button class="btn btn-secondary" onclick="showCode('sequence')">View Sequence Dice Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sequence Dice Game Code Modal -->
+    <div id="sequence-code" class="code-modal">
+        <div class="code-modal-content">
+            <div class="code-header">
+                <h3>Sequence Dice Game - Source Code</h3>
+                <button class="close-modal" onclick="closeCodeModal()">&times;</button>
+            </div>
+            <div class="code-tabs">
+                <button class="code-tab active" onclick="switchTab('sequence', 'game')">Game.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'player')">Player.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'board')">Board.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'cell')">Cell.java</button>
+            </div>
+            <div class="code-body">
+                <div id="sequence-game" class="code-viewer active">
+                    <pre class="code-text">package com.example.sequencedice;
+
+import java.util.*;
+import java.io.Serializable;
+
+public class Game implements Serializable {
+    private final Board board;
+    private final List<Player> players;
+    private final List<Team> teams;
+    private final Dice dice;
+    private final int sequenceLength;
+    private int currentPlayerIndex;
+    private Player winner;
+    private Team winningTeam;
+    private int[] lastRoll;
+    private int currentRollValue;
+    private boolean waitingForPlayerMove;
+    private final List<GameObserver> observers = new ArrayList<>();
+
+    // Game statistics
+    private int roundsPlayed = 0;
+    private int tokensPlaced = 0;
+    private int tokensRemoved = 0;
+
+    public Game(List<Player> players, boolean teamMode) {
+        if (players.size() < 2 || players.size() > 4) {
+            throw new IllegalArgumentException("Player count must be 2-4");
+        }
+        if (players.size() == 4 && !teamMode) {
+            throw new IllegalArgumentException("4 players must play in team mode");
+        }
+        
+        this.players = players;
+        this.board = new Board(6);
+        this.dice = new Dice(2, this);
+        this.teams = new ArrayList<>();
+        this.sequenceLength = (players.size() == 2) ? 5 : 6;
+
+        if (teamMode) {
+            setupTeams();
+        }
+
+        List<Player> orderedPlayers = determinePlayerOrder(new ArrayList<>(players), teamMode);
+        players.clear();
+        players.addAll(orderedPlayers);
+
+        this.currentPlayerIndex = 0;
+        this.waitingForPlayerMove = false;
+
+        notifyGameStarted();
+    }
+
+    private void setupTeams() {
+        Team teamA = new Team("Team " + players.get(0).getToken().getColor());
+        Team teamB = new Team("Team " + players.get(1).getToken().getColor());
+
+        teamA.addMember(players.get(0));
+        teamA.addMember(players.get(2));
+        teamB.addMember(players.get(1));
+        teamB.addMember(players.get(3));
+
+        teams.add(teamA);
+        teams.add(teamB);
+    }
+
+    public void rollDice() {
+        if (isGameOver()) {
+            throw new IllegalStateException("Game has already ended");
+        }
+        if (waitingForPlayerMove) {
+            throw new IllegalStateException("Waiting for player move");
+        }
+
+        this.lastRoll = dice.roll();
+        this.currentRollValue = Arrays.stream(lastRoll).sum();
+        this.waitingForPlayerMove = true;
+
+        roundsPlayed++;
+        notifyDiceRolled(getCurrentPlayer(), lastRoll, currentRollValue);
+    }
+
+    public boolean makeMove(int row, int col) {
+        Player currentPlayer = getCurrentPlayer();
+
+        if (currentRollValue == 10 && !hasOpponentTokens(currentPlayer)) {
+            waitingForPlayerMove = false;
+            advanceToNextPlayer();
+            return false;
+        }
+
+        if (!waitingForPlayerMove || !isValidMove(row, col)) {
+            return false;
+        }
+
+        Cell cell = board.getCell(row, col);
+
+        if (currentRollValue == 10) {
+            cell.setToken(null);
+            tokensRemoved++;
+        } else {
+            cell.setToken(currentPlayer.getToken());
+            tokensPlaced++;
+        }
+
+        notifyTokenPlaced(row, col);
+
+        if (checkWinCondition()) {
+            notifyGameWon();
+        } else {
+            if (currentRollValue == 2 || currentRollValue == 12) {
+                notifyExtraTurnGranted();
+            } else {
+                advanceToNextPlayer();
+            }
+        }
+
+        waitingForPlayerMove = false;
+        return true;
+    }
+
+    public boolean isValidMove(int row, int col) {
+        if (!waitingForPlayerMove) {
+            return false;
+        }
+
+        Cell cell = board.getCell(row, col);
+        Player currentPlayer = getCurrentPlayer();
+        String currentColor = currentPlayer.getToken().getColor();
+        String teamColor = currentPlayer.isInTeam() ? currentPlayer.getTeam().getTeamColor() : currentColor;
+
+        if (currentRollValue == 11) {
+            return cell.isEmpty();
+        }
+        if (currentRollValue == 10) {
+            return !cell.isEmpty() && !cell.getToken().getColor().equals(teamColor) && !cell.isSpecial();
+        }
+
+        if (cell.getValue() != currentRollValue) {
+            return false;
+        }
+
+        boolean hasEmpty = false;
+        for (int r = 0; r < board.getSize(); r++) {
+            for (int c = 0; c < board.getSize(); c++) {
+                Cell temp = board.getCell(r, c);
+                if (temp.getValue() == currentRollValue && temp.isEmpty()) {
+                    hasEmpty = true;
+                    break;
+                }
+            }
+            if (hasEmpty) break;
+        }
+
+        if (cell.isEmpty()) {
+            return true;
+        }
+
+        if (!cell.getToken().getColor().equals(teamColor)) {
+            return !hasEmpty;
+        }
+
+        return false;
+    }
+
+    // Getters
+    public Player getCurrentPlayer() { return players.get(currentPlayerIndex); }
+    public Board getBoard() { return board; }
+    public boolean isGameOver() { return winner != null || winningTeam != null; }
+    public Player getWinner() { return winner; }
+    public Team getWinningTeam() { return winningTeam; }
+    public int[] getLastRoll() { return lastRoll; }
+    public int getCurrentRollValue() { return currentRollValue; }
+    public boolean isWaitingForPlayerMove() { return waitingForPlayerMove; }
+    public List<Player> getPlayers() { return Collections.unmodifiableList(players); }
+}</pre>
+                </div>
+                <div id="sequence-player" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+public class Player {
+    private final int id;
+    private String name;
+    private Token token;
+    private Team team;
+    private int initialRoll;
+
+    public Player(int id, String name, String color) {
+        this.id = id;
+        this.name = name;
+        this.token = new Token(color);
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public Token getToken() { return token; }
+    public Team getTeam() { return team; }
+    public boolean isInTeam() { return team != null; }
+
+    public void setInitialRoll(int roll) {
+        this.initialRoll = roll;
+    }
+
+    public int getInitialRoll() {
+        return initialRoll;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}</pre>
+                </div>
+                <div id="sequence-board" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+public class Board {
+    private final Cell[][] grid;
+    private final int size;
+
+    public Board(int size) {
+        if (size != 6)
+            throw new IllegalArgumentException("Only 6x6 boards are currently supported.");
+        this.size = size;
+        this.grid = initializeBoard(size);
+    }
+
+    private Cell[][] initializeBoard(int size) {
+        int[][] boardNumbers = {
+                {2,3,4,5,6,2},
+                {6,7,8,9,7,3},
+                {5,9,12,12,8,4},
+                {4,8,12,12,9,5},
+                {3,7,9,8,7,6},
+                {2,6,5,4,3,2}
+        };
+
+        Cell[][] grid = new Cell[size][size];
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                grid[row][col] = new Cell(row, col, boardNumbers[row][col]);
+            }
+        }
+        return grid;
+    }
+
+    public Cell getCell(int row,int col) {
+        if (row >= size || col >= size) {
+            throw new IllegalArgumentException("The Positions out of bounds");
+        }
+        return grid[row][col];
+    }
+
+    public int getSize() { return size; }
+}</pre>
+                </div>
+                <div id="sequence-cell" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+public class Cell {
+    private final int row;
+    private final int col;
+    private final int value;
+    private Token token;
+
+    public Cell(int row,int col, int value) {
+        this.row=row;
+        this.col=col;
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+    public Token getToken() {
+        return token;
+    }
+    public void setToken(Token token) {
+        this.token = token;
+    }
+    public boolean isEmpty() {
+        return token == null;
+    }
+
+    public boolean isSpecial() {
+        return value == 2 || value == 12; // Extra turn cells
+    }
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Error Modal -->
+    <div id="portfolio-code" class="code-modal">
+        <div class="code-modal-content">
+            <div class="code-header">
+                <h3>Portfolio Website - Access Restricted</h3>
+                <button class="close-modal" onclick="closeCodeModal()">&times;</button>
+            </div>
+            <div class="error-message">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2 class="error-title">Oops! Project Under Development</h2>
+                <p class="error-text">
+                    You clicked on an ongoing current project!<br>
+                    The source code for this Portfolio will be issued upon request.<br>
+                    In the meantime, feel free to explore the Sequence Dice project code below!
+                </p>
+                <div class="error-actions">
+                    <button class="btn btn-primary" onclick="closeCodeModal()">Close</button>
+                    <button class="btn btn-secondary" onclick="showCode('sequence')">View Sequence Dice Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Experience Section -->
     <section id="experience">
@@ -930,7 +1513,7 @@
     <footer>
         <div class="footer-content">
             <p>&copy; 2024 Lundi Buswana. All Rights Reserved.</p>
-            <p>Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> and <i class="fas fa-code" style="color: var(--primary);"></i></p>
+            <p>Designed by Lundi Buswana with Love <i class="fas fa-heart" style="color: var(--secondary);"></i> and <i class="fas fa-code" style="color: var(--primary);"></i></p>
         </div>
     </footer>
 
@@ -1022,6 +1605,50 @@
             
             // Optional: Show confirmation
             alert('Opening WhatsApp with your message...');
+        });
+
+        // Code Viewer Functions
+        function showCode(project) {
+            document.getElementById(project + '-code').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCodeModal() {
+            const modals = document.querySelectorAll('.code-modal');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchTab(project, tabName) {
+            // Hide all tabs for this project
+            const tabs = document.querySelectorAll('#' + project + '-code .code-viewer');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabButtons = document.querySelectorAll('#' + project + '-code .code-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(project + '-' + tabName).classList.add('active');
+            
+            // Activate tab button
+            event.target.classList.add('active');
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.code-modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    closeCodeModal();
+                }
+            });
         });
 
         // Add animation on scroll
