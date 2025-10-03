@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lundi Buswana | Code Alchemist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --secondary: #ff00c8;
+            --accent: #9d00ff;
+            --dark: #0a0a1a;
+            --darker: #050510;
+            --light: #e6f7ff;
+            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 40px var(--primary);
+            --neon-glow-pink: 0 0 10px var(--secondary), 0 0 20px var(--secondary), 0 0 40px var(--secondary);
+            --neon-glow-purple: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 40px var(--accent);
+            --whatsapp: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, #0f1a2a 100%);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Matrix Background */
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(5, 5, 16, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--neon-glow);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            box-shadow: var(--neon-glow);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            animation: pulse 3s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(0, 243, 255, 0.8), 0 0 40px rgba(157, 0, 255, 0.6); }
+        }
+
+        .hero .tagline {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid;
+            border-radius: 50px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 30px var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border-color: var(--secondary);
+            box-shadow: var(--neon-glow-pink);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            box-shadow: 0 0 30px var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: white;
+            border-color: var(--whatsapp);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            box-shadow: 0 0 30px var(--whatsapp);
+            transform: translateY(-5px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            box-shadow: var(--neon-glow);
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--neon-glow);
+            border-color: var(--primary);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--neon-glow);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--primary);
+        }
+
+        /* Experience Section */
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: var(--neon-glow);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--neon-glow);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .timeline-date {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .contact-item:hover {
+            box-shadow: var(--neon-glow);
+            border-color: var(--primary);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 243, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            box-shadow: var(--neon-glow);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            color: var(--light);
+        }
+
+        .social-link.whatsapp:hover {
+            background: var(--whatsapp);
+            box-shadow: 0 0 20px var(--whatsapp);
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+            font-family: 'Exo 2', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--neon-glow);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--dark);
+            color: var(--light);
+        }
+
+        /* WhatsApp Features */
+        .whatsapp-features {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(37, 211, 102, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--whatsapp);
+        }
+
+        .whatsapp-features h4 {
+            color: var(--whatsapp);
+            margin-bottom: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .whatsapp-features ul {
+            list-style: none;
+        }
+
+        .whatsapp-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-features li::before {
+            content: "✓";
+            color: var(--whatsapp);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 5, 16, 0.9);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Background -->
+    <canvas id="matrix-bg"></canvas>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LUNDI.dev</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="floating">LUNDI BUSWANA</h1>
+            <p class="tagline">Code Alchemist & Digital Innovator</p>
+            <p>Transforming complex problems into elegant solutions through code</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>BSc Mathematics and Statistical Science degree holder and a current final year computer science student with a deep fascination for the tech industry. I specialize in creating practical, user-focused solutions through mobile applications and innovative software development.</p>
+                <p>My unique background in mathematics and computer science allows me to approach problems from multiple perspectives, creating robust and efficient solutions.</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fab fa-java"></i>
+                    <h3>Java</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-android"></i>
+                    <h3>Android</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML/CSS</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>MySQL</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>R Studio</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-tools" style="font-size: 4rem; color: white; z-index: 1;"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">FindnFix Mobile App</h3>
+                    <p>An Android app that makes it easy for people to find and book local repair services with automatic matching to nearby repairers.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-dice" style="font-size: 4rem; color: white; z-index: 1;"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Sequence Dice Game</h3>
+                    <p>A mobile board game developed using Java and Android Studio with interactive gameplay and smooth user interface.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Game Dev</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-rocket" style="font-size: 4rem; color: white; z-index: 1;"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Portfolio Website</h3>
+                    <p>A responsive, animated portfolio website showcasing my skills, projects, and experience with modern web technologies.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Animations</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 - Present</div>
+                    <h3>Founder & Developer - FindnFix Mobile App</h3>
+                    <p>Nelson Mandela University</p>
+                    <ul>
+                        <li>Created an Android app for finding and booking local repair services</li>
+                        <li>Built entire system with Java front-end and PHP/MySQL back-end</li>
+                        <li>Implemented CRUD operations and automatic matching algorithm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - Present</div>
+                    <h3>Computer Science Tutor</h3>
+                    <p>Nelson Mandela University</p>
+                    <ul>
+                        <li>Tutored 1st/2nd-year students in programming (C#/Java)</li>
+                        <li>Assisted with debugging and lab assignments</li>
+                        <li>Guided students in IDEs and coding best practices</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2022</div>
+                    <h3>Data Capturer</h3>
+                    <p>Nelson Mandela University</p>
+                    <ul>
+                        <li>Accurately captured and processed matric students' marks</li>
+                        <li>Used Microsoft Access and ADS database systems</li>
+                        <li>Ensured data integrity through validation procedures</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>lundibuswana@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>066 030 6575</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>South Africa</p>
+                    </div>
+                </div>
+
+                <!-- Direct WhatsApp Contact -->
+                <div class="contact-item" style="border-color: rgba(37, 211, 102, 0.3); background: rgba(37, 211, 102, 0.05);">
+                    <div class="contact-icon" style="background: rgba(37, 211, 102, 0.2); color: var(--whatsapp);">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--whatsapp);">WhatsApp</h3>
+                        <p>Click to message me directly</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/lundi-buswana-130b2b221" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/LundiphileAgile" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/lundiphile25/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/27660306575?text=Hi%20Lundi!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." 
+                       class="social-link whatsapp" target="_blank">
+                       <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <!-- WhatsApp Features -->
+                <div class="whatsapp-features">
+                    <h4>Why WhatsApp?</h4>
+                    <ul>
+                        <li>Instant responses (usually within minutes)</li>
+                        <li>Perfect for quick questions and discussions</li>
+                        <li>Can share files, images, and voice notes</li>
+                        <li>Available on all devices</li>
+                        <li>Best for urgent inquiries</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- WhatsApp Form -->
+            <div class="contact-form">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem;">
+                    <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> Send Message via WhatsApp
+                </h3>
+                
+                <form id="whatsappForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name *" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email *" required>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="subject" name="subject" required>
+                            <option value="">Select Subject *</option>
+                            <option value="Job Opportunity">Job Opportunity</option>
+                            <option value="Project Collaboration">Project Collaboration</option>
+                            <option value="Freelance Work">Freelance Work</option>
+                            <option value="Technical Question">Technical Question</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message *" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-whatsapp" style="width: 100%;">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                    </button>
+                </form>
+
+                <p style="text-align: center; margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
+                    This will open WhatsApp with your pre-filled message
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Lundi Buswana. All Rights Reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> and <i class="fas fa-code" style="color: var(--primary);"></i></p>
+        </div>
+    </footer>
+
+    <script>
+        // Matrix Background
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const chars = "010101010101010101010101010101010101010101010101010101010101";
+        const charArray = chars.split("");
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(5, 5, 16, 0.04)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "#00f3ff";
+            ctx.font = fontSize + "px monospace";
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 35);
+        
+        // Responsive canvas
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // WhatsApp Form Handler
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Your WhatsApp number (international format without +)
+            const phoneNumber = '27660306575'; // +27 66 030 6575
+            
+            // Create the WhatsApp message
+            const whatsappMessage = `*New Message From Portfolio*%0A%0A` +
+                                   `*Name:* ${name}%0A` +
+                                   `*Email:* ${email}%0A` +
+                                   `*Subject:* ${subject}%0A` +
+                                   `*Message:*%0A${message}%0A%0A` +
+                                   `_Sent via your portfolio website_`;
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+            
+            // Optional: Reset form
+            this.reset();
+            
+            // Optional: Show confirmation
+            alert('Opening WhatsApp with your message...');
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.skill-card, .project-card, .timeline-content, .contact-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
