@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lundi Buswana | Code Alchemist</title>
+    <title>Lundi Buswana | Software Architect & Code Chemist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -160,6 +160,27 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--light);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            border: 1px solid var(--primary);
+            font-size: 0.9rem;
+        }
+
         .cta-buttons {
             display: flex;
             gap: 1.5rem;
@@ -310,6 +331,58 @@
             color: var(--primary);
         }
 
+        /* Development Philosophy */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .philosophy-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .philosophy-card:hover::before {
+            left: 100%;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--neon-glow);
+            border-color: var(--primary);
+        }
+
+        .philosophy-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
         /* Projects Section */
         .projects-grid {
             display: grid;
@@ -382,11 +455,120 @@
             border: 1px solid var(--primary);
         }
 
+        .project-architecture {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .arch-pill {
+            display: inline-block;
+            background: rgba(157, 0, 255, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            margin: 0.2rem;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+        }
+
         .project-links {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
+
+        /* Architecture Section */
+        .architecture-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .architecture-diagram {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .architecture-diagram::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.05), transparent);
+            z-index: 0;
+        }
+
+        .layer {
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .layer-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .layer-components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .component {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .component:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .architecture-legend {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        .legend-ui { background: var(--primary); }
+        .legend-business { background: var(--secondary); }
+        .legend-data { background: var(--accent); }
 
         /* Code Viewer Modal */
         .code-modal {
@@ -445,10 +627,32 @@
             transform: scale(1.1);
         }
 
+        .code-stats {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 243, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-value {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
         .code-tabs {
             display: flex;
             background: rgba(0, 243, 255, 0.05);
             border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            overflow-x: auto;
         }
 
         .code-tab {
@@ -459,6 +663,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
+            white-space: nowrap;
         }
 
         .code-tab.active {
@@ -790,7 +995,8 @@
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content,
-            .contact-container {
+            .contact-container,
+            .architecture-container {
                 grid-template-columns: 1fr;
             }
             
@@ -868,6 +1074,7 @@
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="#architecture">Architecture</a>
             <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
         </div>
@@ -877,11 +1084,18 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="floating">LUNDI BUSWANA</h1>
-            <p class="tagline">Code Alchemist & Digital Innovator</p>
-            <p>Transforming complex problems into elegant solutions through code</p>
+            <p class="tagline">Software Architect & Code Alchemist</p>
+            <p class="hero-subtitle">Transforming complex challenges into elegant, scalable solutions through disciplined software engineering and architectural thinking</p>
+            <div>
+                <span class="tech-badge">SOLID Principles</span>
+                <span class="tech-badge">Clean Architecture</span>
+                <span class="tech-badge">Android Development</span>
+                <span class="tech-badge">Full-Stack Solutions</span>
+                <span class="tech-badge">System Design</span>
+            </div>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="#architecture" class="btn btn-secondary">See Architecture</a>
             </div>
         </div>
     </section>
@@ -891,34 +1105,66 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>BSc Mathematics and Statistical Science degree holder and a current final year computer science student with a deep fascination for the tech industry. I specialize in creating practical, user-focused solutions through mobile applications and innovative software development.</p>
-                <p>My unique background in mathematics and computer science allows me to approach problems from multiple perspectives, creating robust and efficient solutions.</p>
+                <p>BSc Mathematics and Statistical Science graduate with a passion for creating elegant software solutions. My unique background allows me to approach complex problems with analytical rigor while maintaining a focus on user-centered design and clean, maintainable code.</p>
+                <p>I don't just write code for fun—I make coding fun by transforming abstract concepts into tangible, impactful applications. In the complex universe of software technology, I find my purpose: building solutions that matter, one line of code at a time.</p>
+                <p>Every morning after my strong coffee, I dive deeper into the ever-evolving tech landscape, constantly learning and applying new patterns and principles to create software that not only works but excels.</p>
             </div>
             <div class="skills-container">
                 <div class="skill-card">
                     <i class="fab fa-java"></i>
                     <h3>Java</h3>
+                    <p>Enterprise & Android</p>
                 </div>
                 <div class="skill-card">
                     <i class="fab fa-android"></i>
                     <h3>Android</h3>
+                    <p>Native Development</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML/CSS</h3>
+                    <i class="fas fa-code-branch"></i>
+                    <h3>Architecture</h3>
+                    <p>Clean & SOLID</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-database"></i>
                     <h3>MySQL</h3>
+                    <p>Database Design</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>System Design</h3>
+                    <p>Scalable Solutions</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-calculator"></i>
-                    <h3>R Studio</h3>
+                    <h3>Analytics</h3>
+                    <p>Data-Driven Approach</p>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Development Philosophy -->
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <h3 class="philosophy-title">Clean Architecture</h3>
+                <p>I build software with clear separation of concerns, following SOLID principles to create maintainable, testable, and scalable systems that stand the test of time.</p>
+            </div>
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="philosophy-title">User-Centric Design</h3>
+                <p>Every line of code serves a purpose - to create intuitive, efficient experiences that solve real problems for real people.</p>
+            </div>
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="philosophy-title">Performance Focus</h3>
+                <p>I optimize for speed and efficiency, ensuring applications are not just functional but exceptionally responsive and resource-conscious.</p>
             </div>
         </div>
     </section>
@@ -934,16 +1180,23 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">FindnFix Mobile App</h3>
-                    <p>An Android app that makes it easy for people to find and book local repair services with automatic matching to nearby repairers.</p>
+                    <p>A comprehensive service marketplace connecting users with local repair professionals through intelligent matching algorithms.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">Android</span>
                         <span class="tech-tag">PHP</span>
                         <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">REST API</span>
+                    </div>
+                    <div class="project-architecture">
+                        <span class="arch-pill">MVP Pattern</span>
+                        <span class="arch-pill">Repository Pattern</span>
+                        <span class="arch-pill">RESTful Services</span>
+                        <span class="arch-pill">Location Services</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn btn-primary">Live Demo</a>
-                        <button class="btn btn-code" onclick="showCode('findnfix')">View Code</button>
+                        <button class="btn btn-code" onclick="showCode('findnfix')">View Architecture</button>
                     </div>
                 </div>
             </div>
@@ -955,11 +1208,18 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Sequence Dice Game</h3>
-                    <p>A mobile board game developed using Java and Android Studio with interactive gameplay and smooth user interface.</p>
+                    <p>A strategic board game implementation showcasing clean architecture, game logic separation, and responsive UI design.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">Android</span>
-                        <span class="tech-tag">Game Dev</span>
+                        <span class="tech-tag">Game Architecture</span>
+                        <span class="tech-tag">SOLID Principles</span>
+                    </div>
+                    <div class="project-architecture">
+                        <span class="arch-pill">MVC Pattern</span>
+                        <span class="arch-pill">Observer Pattern</span>
+                        <span class="arch-pill">Game State Management</span>
+                        <span class="arch-pill">Custom Adapters</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn btn-primary">Live Demo</a>
@@ -975,17 +1235,117 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Portfolio Website</h3>
-                    <p>A responsive, animated portfolio website showcasing my skills, projects, and experience with modern web technologies.</p>
+                    <p>A responsive, animated portfolio showcasing modern web development techniques with performance optimization.</p>
                     <div class="project-tech">
                         <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Animations</span>
+                        <span class="tech-tag">Responsive Design</span>
+                    </div>
+                    <div class="project-architecture">
+                        <span class="arch-pill">Component-Based</span>
+                        <span class="arch-pill">CSS Grid & Flexbox</span>
+                        <span class="arch-pill">Intersection Observer</span>
+                        <span class="arch-pill">Progressive Enhancement</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn btn-primary">Live Demo</a>
                         <button class="btn btn-code" onclick="showCode('portfolio')">View Code</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture">
+        <h2 class="section-title">Software Architecture</h2>
+        <div class="architecture-container">
+            <div class="architecture-diagram">
+                <h3 style="color: var(--primary); margin-bottom: 2rem; text-align: center;">Sequence Dice Game Architecture</h3>
+                
+                <div class="layer">
+                    <div class="layer-title">
+                        <i class="fas fa-mobile-alt"></i>
+                        Presentation Layer
+                    </div>
+                    <div class="layer-components">
+                        <div class="component">Activity Classes</div>
+                        <div class="component">Fragments</div>
+                        <div class="component">Adapters</div>
+                        <div class="component">Custom Views</div>
+                    </div>
+                </div>
+                
+                <div class="layer">
+                    <div class="layer-title">
+                        <i class="fas fa-cogs"></i>
+                        Business Logic Layer
+                    </div>
+                    <div class="layer-components">
+                        <div class="component">Game Controller</div>
+                        <div class="component">Dice Engine</div>
+                        <div class="component">Move Validator</div>
+                        <div class="component">Sequence Detector</div>
+                    </div>
+                </div>
+                
+                <div class="layer">
+                    <div class="layer-title">
+                        <i class="fas fa-database"></i>
+                        Data Layer
+                    </div>
+                    <div class="layer-components">
+                        <div class="component">Board Model</div>
+                        <div class="component">Player Repository</div>
+                        <div class="component">Game State</div>
+                        <div class="component">Statistics Tracker</div>
+                    </div>
+                </div>
+                
+                <div class="layer">
+                    <div class="layer-title">
+                        <i class="fas fa-exchange-alt"></i>
+                        Communication Patterns
+                    </div>
+                    <div class="layer-components">
+                        <div class="component">Observer Pattern</div>
+                        <div class="component">Event Bus</div>
+                        <div class="component">Callbacks</div>
+                        <div class="component">Data Binding</div>
+                    </div>
+                </div>
+                
+                <div class="architecture-legend">
+                    <div class="legend-item">
+                        <div class="legend-color legend-ui"></div>
+                        <span>UI Components</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-business"></div>
+                        <span>Business Logic</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-data"></div>
+                        <span>Data Management</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Architectural Principles</h3>
+                <div class="philosophy-card" style="margin-bottom: 1.5rem;">
+                    <h4 class="philosophy-title">Separation of Concerns</h4>
+                    <p>Clear boundaries between UI, business logic, and data layers ensure maintainability and testability.</p>
+                </div>
+                <div class="philosophy-card" style="margin-bottom: 1.5rem;">
+                    <h4 class="philosophy-title">SOLID Compliance</h4>
+                    <p>Each class has a single responsibility, dependencies are inverted, and interfaces define contracts.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h4 class="philosophy-title">Observer Pattern</h4>
+                    <p>Loose coupling between components through event-driven architecture for better scalability.</p>
                 </div>
             </div>
         </div>
@@ -1024,18 +1384,47 @@
                 <h3>Sequence Dice Game - Source Code</h3>
                 <button class="close-modal" onclick="closeCodeModal()">&times;</button>
             </div>
+            
+            <div class="code-stats">
+                <div class="stat-item">
+                    <i class="fas fa-file-code"></i>
+                    <span>Files: <span class="stat-value">15+</span></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-code"></i>
+                    <span>Lines: <span class="stat-value">2,000+</span></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Architecture: <span class="stat-value">Layered</span></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Principles: <span class="stat-value">SOLID</span></span>
+                </div>
+            </div>
+            
             <div class="code-tabs">
                 <button class="code-tab active" onclick="switchTab('sequence', 'game')">Game.java</button>
                 <button class="code-tab" onclick="switchTab('sequence', 'player')">Player.java</button>
                 <button class="code-tab" onclick="switchTab('sequence', 'board')">Board.java</button>
                 <button class="code-tab" onclick="switchTab('sequence', 'cell')">Cell.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'dice')">Dice.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'gameobserver')">GameObserver.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'sequencevalidator')">SequenceValidator.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'team')">Team.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'token')">Token.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'boardadapter')">BoardAdapter.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'gameactivity')">GameActivity.java</button>
+                <button class="code-tab" onclick="switchTab('sequence', 'frontvinstructions')">FrontVInstructions.java</button>
             </div>
+            
             <div class="code-body">
                 <div id="sequence-game" class="code-viewer active">
                     <pre class="code-text">package com.example.sequencedice;
 
-import java.util.*;
 import java.io.Serializable;
+import java.util.*;
 
 public class Game implements Serializable {
     private final Board board;
@@ -1051,7 +1440,7 @@ public class Game implements Serializable {
     private boolean waitingForPlayerMove;
     private final List<GameObserver> observers = new ArrayList<>();
 
-    // Game statistics
+    // New fields for game statistics
     private int roundsPlayed = 0;
     private int tokensPlaced = 0;
     private int tokensRemoved = 0;
@@ -1063,7 +1452,6 @@ public class Game implements Serializable {
         if (players.size() == 4 && !teamMode) {
             throw new IllegalArgumentException("4 players must play in team mode");
         }
-        
         this.players = players;
         this.board = new Board(6);
         this.dice = new Dice(2, this);
@@ -1084,6 +1472,70 @@ public class Game implements Serializable {
         notifyGameStarted();
     }
 
+    public void addObserver(GameObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(GameObserver observer) {
+        observers.remove(observer);
+    }
+
+    private void notifyGameStarted() {
+        for (GameObserver observer : observers) {
+            observer.onGameStarted(
+                    Collections.unmodifiableList(players),
+                    teams.isEmpty() ? null : Collections.unmodifiableList(teams)
+            );
+        }
+    }
+
+    private void notifyPlayerTurnChanged() {
+        for (GameObserver observer : observers) {
+            observer.onPlayerTurnChanged(getCurrentPlayer());
+        }
+    }
+
+    public void notifyDiceRolled(Player player, int[] roll, int total) {
+        for (GameObserver observer : observers) {
+            observer.onDiceRolled(player, roll, total);
+        }
+    }
+
+    private void notifyTokenPlaced(int row, int col) {
+        for (GameObserver observer : observers) {
+            observer.onTokenPlaced(getCurrentPlayer(), row, col);
+        }
+    }
+
+    private void notifyExtraTurnGranted() {
+        for (GameObserver observer : observers) {
+            observer.onExtraTurnGranted(getCurrentPlayer());
+        }
+    }
+
+    private void notifyGameWon() {
+        for (GameObserver observer : observers) {
+            if (winner != null) {
+                observer.onGameWon(winner);
+            } else if (winningTeam != null) {
+                observer.onTeamGameWon(winningTeam);
+            }
+        }
+    }
+
+    public void notifyTieDetected() {
+        for (GameObserver observer : observers) {
+            observer.onTieDetected();
+        }
+    }
+
+    public void notifyPlayerOrderDetermined(List<Player> orderedPlayers) {
+        for (GameObserver observer : observers) {
+            observer.onPlayerOrderDetermined(Collections.unmodifiableList(orderedPlayers));
+        }
+    }
+
+
     private void setupTeams() {
         Team teamA = new Team("Team " + players.get(0).getToken().getColor());
         Team teamB = new Team("Team " + players.get(1).getToken().getColor());
@@ -1096,6 +1548,104 @@ public class Game implements Serializable {
         teams.add(teamA);
         teams.add(teamB);
     }
+    private List<Player> determinePlayerOrder(List<Player> playerList, boolean teamMode) {
+        Map<Player, Integer> playerRolls = new HashMap<>();
+        Map<Team, Integer> teamRolls = new HashMap<>();
+
+        rollForPlayers(playerList, playerRolls, teamMode, teamRolls);
+
+        Player startingPlayer = teamMode
+                ? determineTeamModeStart(playerList, playerRolls, teamRolls)
+                : determineFreeForAllStart(playerList, playerRolls);
+
+        List<Player> ordered = arrangeClockwise(playerList, startingPlayer);
+        notifyPlayerOrderDetermined(ordered);
+        return ordered;
+    }
+
+    private void rollForPlayers(List<Player> targetPlayers,
+                                Map<Player, Integer> playerRolls,
+                                boolean teamMode,
+                                Map<Team, Integer> teamRolls) {
+        for (Player player : targetPlayers) {
+            int[] roll = dice.roll();
+            int total = Arrays.stream(roll).sum();
+            player.setInitialRoll(total);
+            playerRolls.put(player, total);
+            notifyDiceRolled(player, roll, total);
+
+            if (teamMode) {
+                Team team = player.getTeam();
+                teamRolls.put(team, teamRolls.getOrDefault(team, 0) + total);
+            }
+        }
+    }
+
+    private Player determineTeamModeStart(List<Player> targetPlayers,
+                                          Map<Player, Integer> playerRolls,
+                                          Map<Team, Integer> teamRolls) {
+        int highestTeamRoll = Collections.max(teamRolls.values());
+        List<Team> topTeams = new ArrayList<>();
+        for (Map.Entry<Team, Integer> e : teamRolls.entrySet()) {
+            if (e.getValue() == highestTeamRoll) {
+                Team key = e.getKey();
+                topTeams.add(key);
+            }
+        }
+
+        if (topTeams.size() > 1) {
+            notifyTieDetected();
+            return determinePlayerOrder(targetPlayers, true).get(0); // re-roll tied teams
+        }
+
+        Team winningTeam = topTeams.get(0);
+        int highestPlayerRoll = winningTeam.getMembers().stream()
+                .mapToInt(playerRolls::get)
+                .max()
+                .orElseThrow();
+
+        List<Player> topPlayers = new ArrayList<>();
+        for (Player p : winningTeam.getMembers()) {
+            if (playerRolls.get(p) == highestPlayerRoll) {
+                topPlayers.add(p);
+            }
+        }
+
+        if (topPlayers.size() > 1) {
+            notifyTieDetected();
+            return determinePlayerOrder(targetPlayers, true).get(0); // re-roll tied players within team
+        }
+
+        return topPlayers.get(0);
+    }
+
+    private Player determineFreeForAllStart(List<Player> targetPlayers,
+                                            Map<Player, Integer> playerRolls) {
+        int highestRoll = Collections.max(playerRolls.values());
+        List<Player> topPlayers = new ArrayList<>();
+        for (Player p : targetPlayers) {
+            if (playerRolls.get(p) == highestRoll) {
+                topPlayers.add(p);
+            }
+        }
+
+        if (topPlayers.size() > 1) {
+            notifyTieDetected();
+            return determinePlayerOrder(targetPlayers, false).get(0); // re-roll tied players
+        }
+
+        return topPlayers.get(0);
+    }
+
+    private List<Player> arrangeClockwise(List<Player> list, Player startingPlayer) {
+        int startIndex = list.indexOf(startingPlayer);
+        List<Player> ordered = new ArrayList<>(list.size());
+        for (int i = 0; i < list.size(); i++) {
+            ordered.add(list.get((startIndex + i) % list.size()));
+        }
+        return ordered;
+    }
+
 
     public void rollDice() {
         if (isGameOver()) {
@@ -1110,6 +1660,8 @@ public class Game implements Serializable {
         this.waitingForPlayerMove = true;
 
         roundsPlayed++;
+
+        // Notify for UI display/animation
         notifyDiceRolled(getCurrentPlayer(), lastRoll, currentRollValue);
     }
 
@@ -1150,6 +1702,34 @@ public class Game implements Serializable {
 
         waitingForPlayerMove = false;
         return true;
+    }
+
+    // New method to check if any valid moves exist for the current roll
+    public List<Cell> getValidMoves() {
+        List<Cell> validMoves = new ArrayList<>();
+        for (int r = 0; r < board.getSize(); r++) {
+            for (int c = 0; c < board.getSize(); c++) {
+                if (isValidMove(r, c)) {
+                    validMoves.add(board.getCell(r, c));
+                }
+            }
+        }
+        return validMoves;
+    }
+
+
+    private boolean hasOpponentTokens(Player player) {
+        String teamColor = player.isInTeam() ? player.getTeam().getTeamColor()
+                : player.getToken().getColor();
+        for (int r = 0; r < board.getSize(); r++) {
+            for (int c = 0; c < board.getSize(); c++) {
+                Cell cell = board.getCell(r, c);
+                if (!cell.isEmpty() && !cell.getToken().getColor().equals(teamColor)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public boolean isValidMove(int row, int col) {
@@ -1196,7 +1776,58 @@ public class Game implements Serializable {
         return false;
     }
 
-    // Getters
+    private boolean checkWinCondition() {
+        Player currentPlayer = getCurrentPlayer();
+        SequenceValidator validator = new SequenceValidator(board, sequenceLength);
+
+        if (currentPlayer.isInTeam()) {
+            if (validator.hasSequence(currentPlayer.getTeam().getTeamColor())) {
+                winningTeam = currentPlayer.getTeam();
+                return true;
+            }
+        } else {
+            if (validator.hasSequence(currentPlayer.getToken().getColor())) {
+                winner = currentPlayer;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void advanceToNextPlayer() {
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        notifyPlayerTurnChanged();
+    }
+
+    public int getRoundsPlayed() { return roundsPlayed; }
+    public int getTokensPlaced() { return tokensPlaced; }
+    public int getTokensRemoved() { return tokensRemoved; }
+
+    public Map<String, Integer> getLongestSequences() {
+        SequenceValidator validator = new SequenceValidator(board, sequenceLength);
+        Map<String, Integer> sequences = new HashMap<>();
+        if (players.isEmpty()) {
+            return sequences;
+        }
+
+        if (players.get(0).isInTeam()) {
+            for (Team team : teams) {
+                sequences.put(team.getName(), validator.getLongestSequence(team.getTeamColor()));
+            }
+        } else {
+            for (Player player : players) {
+                sequences.put(player.getName(), validator.getLongestSequence(player.getToken().getColor()));
+            }
+        }
+        return sequences;
+    }
+
+    public void setWaitingForPlayerMove(boolean waitingForPlayerMove) {
+        this.waitingForPlayerMove = waitingForPlayerMove;
+    }
+
+
+
     public Player getCurrentPlayer() { return players.get(currentPlayerIndex); }
     public Board getBoard() { return board; }
     public boolean isGameOver() { return winner != null || winningTeam != null; }
@@ -1206,8 +1837,13 @@ public class Game implements Serializable {
     public int getCurrentRollValue() { return currentRollValue; }
     public boolean isWaitingForPlayerMove() { return waitingForPlayerMove; }
     public List<Player> getPlayers() { return Collections.unmodifiableList(players); }
+
+    public int getSequenceLength() {
+        return sequenceLength;
+    }
 }</pre>
                 </div>
+                
                 <div id="sequence-player" class="code-viewer">
                     <pre class="code-text">package com.example.sequencedice;
 
@@ -1251,6 +1887,7 @@ public class Player {
     }
 }</pre>
                 </div>
+                
                 <div id="sequence-board" class="code-viewer">
                     <pre class="code-text">package com.example.sequencedice;
 
@@ -1291,9 +1928,13 @@ public class Board {
         return grid[row][col];
     }
 
+
+
     public int getSize() { return size; }
-}</pre>
+}
+</pre>
                 </div>
+                
                 <div id="sequence-cell" class="code-viewer">
                     <pre class="code-text">package com.example.sequencedice;
 
@@ -1325,8 +1966,926 @@ public class Cell {
     public boolean isSpecial() {
         return value == 2 || value == 12; // Extra turn cells
     }
+}
+
+</pre>
+                </div>
+                
+                <div id="sequence-dice" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Dice {
+    private static final Random RANDOM = new Random();
+    private final int diceCount;
+    private final Game game;
+
+    public Dice(int diceCount, Game game) {
+        this.diceCount = diceCount;
+        this.game = game;
+    }
+
+    public int[] roll() {
+        int[] results = new int[diceCount];
+        for (int i = 0; i < diceCount; i++) {
+            results[i] = RANDOM.nextInt(6) + 1;
+        }
+        return results;
+    }
+
+    public List<Player> determinePlayerOrder(List<Player> players, boolean teamMode) {
+        if (players.size() < 2 || players.size() > 4) {
+            throw new IllegalArgumentException("Invalid player count");
+        }
+
+        // First rolling phase - all players roll
+        Map<Player, Integer> playerRolls = new HashMap<>();
+        Map<Team, Integer> teamRolls = new HashMap<>();
+
+        for (Player player : players) {
+            int[] roll = this.roll();
+            int total = Arrays.stream(roll).sum();
+            player.setInitialRoll(total);
+            playerRolls.put(player, total);
+            game.notifyDiceRolled(player, roll, total);
+
+            if (teamMode) {
+                Team team = player.getTeam();
+                teamRolls.put(team, Math.max(teamRolls.getOrDefault(team, 0), total));
+            }
+        }
+
+        // Sort players based on game mode
+        List<Player> orderedPlayers = new ArrayList<>();
+        if (teamMode) {
+            // Sort teams by their highest roll
+            List<Team> sortedTeams = teamRolls.entrySet().stream()
+                    .sorted(Map.Entry.<Team, Integer>comparingByValue().reversed())
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
+            // Check for team ties
+            if (sortedTeams.size() > 1 &&
+                    teamRolls.get(sortedTeams.get(0)).equals(teamRolls.get(sortedTeams.get(1)))) {
+                game.notifyTieDetected();
+                return determinePlayerOrder(players, teamMode); // Re-roll tied teams
+            }
+
+            // Within each team, sort players by their individual rolls
+            for (Team team : sortedTeams) {
+                List<Player> teamPlayers = team.getMembers().stream()
+                        .sorted((p1, p2) -> Integer.compare(
+                                playerRolls.get(p2),
+                                playerRolls.get(p1)))
+                        .collect(Collectors.toList());
+
+                // Check for player ties within team
+                if (teamPlayers.size() > 1 &&
+                        playerRolls.get(teamPlayers.get(0)).equals(playerRolls.get(teamPlayers.get(1)))) {
+                    game.notifyTieDetected();
+                    return determinePlayerOrder(players, teamMode); // Re-roll tied players
+                }
+
+                orderedPlayers.addAll(teamPlayers);
+            }
+        } else {
+            // Sort all players by their rolls
+            orderedPlayers = playerRolls.entrySet().stream()
+                    .sorted(Map.Entry.<Player, Integer>comparingByValue().reversed())
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
+            // Check for ties between players
+            for (int i = 0; i < orderedPlayers.size() - 1; i++) {
+                if (playerRolls.get(orderedPlayers.get(i)).equals(
+                        playerRolls.get(orderedPlayers.get(i + 1)))) {
+                    game.notifyTieDetected();
+                    return determinePlayerOrder(players, teamMode); // Re-roll tied players
+                }
+            }
+        }
+
+        game.notifyPlayerOrderDetermined(orderedPlayers);
+        return orderedPlayers;
+    }
 }</pre>
                 </div>
+                
+                <div id="sequence-gameobserver" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+import java.util.List;
+
+public interface GameObserver {
+    void onGameStarted(List<Player> players, List<Team> teams);
+    void onPlayerTurnChanged(Player currentPlayer);
+    void onDiceRolled(Player player, int[] diceValues, int total);
+    void onTokenPlaced(Player player, int row, int col);
+    void onExtraTurnGranted(Player player);
+    void onGameWon(Player winner);
+    void onTeamGameWon(Team winningTeam);
+    void onTieDetected();
+    void onPlayerOrderDetermined(List<Player> orderedPlayers);
+}
+</pre>
+                </div>
+                
+                <div id="sequence-sequencevalidator" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+public class SequenceValidator {
+    private final Board board;
+    private final int requiredLength;
+
+    public SequenceValidator(Board board, int requiredLength) {
+        this.board = board;
+        this.requiredLength = requiredLength;
+    }
+
+    public boolean hasSequence(String color) {
+        return getLongestSequence(color) >= requiredLength;
+    }
+
+    public int getLongestSequence(String color) {
+        int maxSequence = 0;
+        for (int row = 0; row < board.getSize(); row++) {
+            for (int col = 0; col < board.getSize(); col++) {
+                Cell cell = board.getCell(row, col);
+                if (!cell.isEmpty() && isMatchingColor(cell.getToken().getColor(), color)) {
+                    // Check all four primary directions from this cell
+                    maxSequence = Math.max(maxSequence, checkDirection(row, col, 1, 0, color));   // Vertical
+                    maxSequence = Math.max(maxSequence, checkDirection(row, col, 0, 1, color));   // Horizontal
+                    maxSequence = Math.max(maxSequence, checkDirection(row, col, 1, 1, color));   // Diagonal (down-right)
+                    maxSequence = Math.max(maxSequence, checkDirection(row, col, 1, -1, color));  // Anti-diagonal (down-left)
+                }
+            }
+        }
+        return maxSequence;
+    }
+
+    private int checkDirection(int startRow, int startCol, int rowInc, int colInc, String color) {
+        int count = 0;
+        // Count in one direction
+        count += countInSingleDirection(startRow, startCol, rowInc, colInc, color);
+        // Count in the opposite direction
+        count += countInSingleDirection(startRow, startCol, -rowInc, -colInc, color);
+        // The starting cell is counted in both directions, so we subtract one
+        return count - 1;
+    }
+
+    private int countInSingleDirection(int startRow, int startCol, int rowInc, int colInc, String color) {
+        int count = 0;
+        int currentRow = startRow;
+        int currentCol = startCol;
+
+        while (isValidPosition(currentRow, currentCol)) {
+            Cell cell = board.getCell(currentRow, currentCol);
+            if (cell.isEmpty() || !isMatchingColor(cell.getToken().getColor(), color)) {
+                break;
+            }
+            count++;
+            currentRow += rowInc;
+            currentCol += colInc;
+        }
+        return count;
+    }
+
+    private boolean isMatchingColor(String cellColor, String targetColor) {
+        return cellColor.equals(targetColor);
+    }
+
+    private boolean isValidPosition(int row, int col) {
+        return row >= 0 && row < board.getSize() &&
+                col >= 0 && col < board.getSize();
+    }
+}</pre>
+                </div>
+                
+                <div id="sequence-team" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Team {
+    private final String name;
+    private final List<Player> members = new ArrayList<>();
+
+    public Team(String name) {
+        this.name = name;
+    }
+
+    public void addMember(Player player) {
+        members.add(player);
+        player.setTeam(this);
+    }
+
+    public String getName() { return name; }
+    public List<Player> getMembers() { return members; }
+    public String getTeamColor() {
+        if (members.isEmpty())
+            throw new IllegalStateException("Team has no members.");
+        return members.get(0).getToken().getColor();
+    }
+
+
+}
+</pre>
+                </div>
+                
+                <div id="sequence-token" class="code-viewer">
+                    <pre class="code-text">package com.example.sequencedice;
+
+public class Token {
+    private final String color;
+    public Token(String color) {
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+}
+
+</pre>
+                </div>
+                
+                <div id="sequence-boardadapter" class="code-viewer">
+                    <pre class="code-text">package com.example.androidui2;
+
+import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.sequencedice.Board;
+import com.example.sequencedice.Cell;
+import com.example.sequencedice.Game;
+
+public class BoardAdapter extends BaseAdapter {
+    private final Context context;
+    private final Board board;
+    private final Game game;
+    private final LayoutInflater inflater;
+
+    public BoardAdapter(Context context, Board board, Game game) {
+        this.context = context;
+        this.board = board;
+        this.game = game;
+        this.inflater = LayoutInflater.from(context);
+    }
+
+    @Override
+    public int getCount() {
+        return board.getSize() * board.getSize();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        int row = position / board.getSize();
+        int col = position % board.getSize();
+        return board.getCell(row, col);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.cell_item, parent, false);
+            holder = new ViewHolder();
+            holder.valueText = convertView.findViewById(R.id.cell_value);
+            holder.tokenView = convertView.findViewById(R.id.cell_token);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        // Calculate dynamic cell size based on orientation
+        int cellSize = calculateCellSize(parent);
+        convertView.setLayoutParams(new GridView.LayoutParams(cellSize, cellSize));
+
+        int row = position / board.getSize();
+        int col = position % board.getSize();
+        Cell cell = board.getCell(row, col);
+
+        // Set cell value
+        holder.valueText.setText(String.valueOf(cell.getValue()));
+
+        // Set token appearance using drawables
+        if (cell.isEmpty()) {
+            holder.tokenView.setVisibility(View.INVISIBLE);
+        } else {
+            holder.tokenView.setVisibility(View.VISIBLE);
+            switch (cell.getToken().getColor()) {
+                case "RED":
+                    holder.tokenView.setImageResource(R.drawable.token_red);
+                    break;
+                case "BLUE":
+                    holder.tokenView.setImageResource(R.drawable.token_blue);
+                    break;
+                case "GREEN":
+                    holder.tokenView.setImageResource(R.drawable.token_green);
+                    break;
+                case "YELLOW":
+                    holder.tokenView.setImageResource(R.drawable.token_yellow);
+                    break;
+            }
+        }
+
+        // Set cell background based on game state
+        updateCellBackground(convertView, cell, row, col);
+
+        return convertView;
+    }
+
+    private int calculateCellSize(ViewGroup parent) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        int orientation = context.getResources().getConfiguration().orientation;
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape, use height for square cells (board is on left)
+            return parent.getHeight() / board.getSize();
+        } else {
+            // In portrait, use width minus padding and spacing
+            int gridWidth = parent.getWidth();
+            int padding = parent.getPaddingLeft() + parent.getPaddingRight();
+            int horizontalSpacing = ((GridView) parent).getHorizontalSpacing();
+            return (gridWidth - padding - ((board.getSize() - 1) * horizontalSpacing)) / board.getSize();
+        }
+    }
+
+    private void updateCellBackground(View cellView, Cell cell, int row, int col) {
+        if (game.isWaitingForPlayerMove() && game.isValidMove(row, col)) {
+            switch (game.getCurrentRollValue()) {
+                case 10:
+                    cellView.setBackgroundResource(R.drawable.defensive_move_bg);
+                    break;
+                case 11:
+                    cellView.setBackgroundResource(R.drawable.wild_move_bg);
+                    break;
+                default:
+                    cellView.setBackgroundResource(R.drawable.valid_move_bg);
+                    break;
+            }
+        } else if (cell.isSpecial()) {
+            cellView.setBackgroundResource(R.drawable.special_cell_bg);
+        } else {
+            cellView.setBackgroundResource(R.drawable.normal_cell_bg);
+        }
+    }
+
+    // ViewHolder pattern for better performance
+    private static class ViewHolder {
+        TextView valueText;
+        ImageView tokenView;
+    }
+}</pre>
+                </div>
+                
+                <div id="sequence-gameactivity" class="code-viewer">
+                    <pre class="code-text">package com.example.androidui2;
+
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.sequencedice.Cell;
+import com.example.sequencedice.Game;
+import com.example.sequencedice.Player;
+import com.example.sequencedice.Team;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+public class GameActivity extends AppCompatActivity {
+    private Game game;
+    private boolean teamMode = false;
+    private BoardAdapter boardAdapter;
+    private int playerCount;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+
+        initializeUI();
+        setupGameModeSelection();
+        setupGameButtons();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        setContentView(R.layout.activity_game);
+        restoreGameState();
+    }
+
+    private void initializeUI() {
+        GridView gridView = findViewById(R.id.GridGame);
+        gridView.setNumColumns(6);
+        updateButtonStates(false);
+    }
+
+    private void restoreGameState() {
+        initializeUI();
+        setupGameButtons();
+
+        if (game != null) {
+            setupBoard();
+            updateGameUI();
+            highlightSelectedMode();
+        }
+    }
+
+    private void highlightSelectedMode() {
+        if (game != null) {
+            Button modeButton;
+            if (teamMode) {
+                modeButton = findViewById(R.id.button4);
+            } else {
+                int playerCount = game.getPlayers().size();
+                modeButton = playerCount == 2 ? findViewById(R.id.btn2players) : findViewById(R.id.btn3players);
+            }
+            modeButton.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+        }
+    }
+
+    private void setupGameModeSelection() {
+        Button btn2Players = findViewById(R.id.btn2players);
+        Button btn3Players = findViewById(R.id.btn3players);
+        Button btnTeamMode = findViewById(R.id.button4);
+
+        View.OnClickListener modeSelectionListener = v -> {
+            resetModeSelectionUI();
+            if (v == btn2Players) {
+                playerCount = 2;
+                teamMode = false;
+                v.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                showPlayerSetupDialog(playerCount, teamMode);
+            } else if (v == btn3Players) {
+                playerCount = 3;
+                teamMode = false;
+                v.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                showPlayerSetupDialog(playerCount, teamMode);
+            } else if (v == btnTeamMode) {
+                playerCount = 4;
+                teamMode = true;
+                v.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                showPlayerSetupDialog(playerCount, teamMode);
+            }
+        };
+
+        btn2Players.setOnClickListener(modeSelectionListener);
+        btn3Players.setOnClickListener(modeSelectionListener);
+        btnTeamMode.setOnClickListener(modeSelectionListener);
+    }
+
+    private void resetModeSelectionUI() {
+        findViewById(R.id.btn2players).setBackgroundTintList(null);
+        findViewById(R.id.btn3players).setBackgroundTintList(null);
+        findViewById(R.id.button4).setBackgroundTintList(null);
+    }
+
+    private void setupGameButtons() {
+        findViewById(R.id.btnPlay).setOnClickListener(v -> {
+            startGame();
+            Toast.makeText(this, "Player "+game.getCurrentPlayer().getName()+" rolled higher sum, therefore will roll first", Toast.LENGTH_SHORT).show();
+        });
+        findViewById(R.id.btnrolldice).setOnClickListener(v -> handleDiceRoll());
+        findViewById(R.id.btnNewGame).setOnClickListener(v -> resetGame());
+        findViewById(R.id.btnPause).setOnClickListener(v -> showPauseDialog());
+    }
+
+    private void showPlayerSetupDialog(int playerCount, boolean teamMode) {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_player_setup);
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        LinearLayout player3Layout = dialog.findViewById(R.id.player3Layout);
+        LinearLayout player4Layout = dialog.findViewById(R.id.player4Layout);
+        Button btnStartGame = dialog.findViewById(R.id.btnStartGame);
+
+        EditText etPlayer1 = dialog.findViewById(R.id.etPlayer1);
+        EditText etPlayer2 = dialog.findViewById(R.id.etPlayer2);
+        EditText etPlayer3 = dialog.findViewById(R.id.etPlayer3);
+        EditText etPlayer4 = dialog.findViewById(R.id.etPlayer4);
+
+        Spinner spinnerColor1 = dialog.findViewById(R.id.spinnerColor1);
+        Spinner spinnerColor2 = dialog.findViewById(R.id.spinnerColor2);
+        Spinner spinnerColor3 = dialog.findViewById(R.id.spinnerColor3);
+        Spinner spinnerColor4 = dialog.findViewById(R.id.spinnerColor4);
+
+        List<String> playerColors = Arrays.asList(getResources().getStringArray(R.array.player_colors));
+        ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, playerColors);
+        colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        List<String> teamColors = Arrays.asList(getResources().getStringArray(R.array.team_colors));
+        ArrayAdapter<String> teamColorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, teamColors);
+        teamColorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerColor1.setAdapter(teamMode ? teamColorAdapter : colorAdapter);
+        spinnerColor2.setAdapter(teamMode ? teamColorAdapter : colorAdapter);
+        spinnerColor3.setAdapter(colorAdapter);
+        spinnerColor4.setAdapter(colorAdapter);
+
+        if (playerCount > 2) player3Layout.setVisibility(View.VISIBLE);
+        if (playerCount > 3) player4Layout.setVisibility(View.VISIBLE);
+
+        if (teamMode) {
+            etPlayer1.setHint("Player 1 Name (Red)");
+            etPlayer2.setHint("Player 2 Name (Blue)");
+            etPlayer3.setHint("Player 3 Name (Red)");
+            etPlayer4.setHint("Player 4 Name (Blue)");
+        }
+
+        btnStartGame.setOnClickListener(v -> {
+            List<EditText> nameFields = new ArrayList<>();
+            List<Spinner> colorSpinners = new ArrayList<>();
+            nameFields.add(etPlayer1);
+            nameFields.add(etPlayer2);
+            colorSpinners.add(spinnerColor1);
+            colorSpinners.add(spinnerColor2);
+            if (playerCount > 2) {
+                nameFields.add(etPlayer3);
+                colorSpinners.add(spinnerColor3);
+            }
+            if (playerCount > 3) {
+                nameFields.add(etPlayer4);
+                colorSpinners.add(spinnerColor4);
+            }
+
+            for (EditText nameField : nameFields) {
+                if (TextUtils.isEmpty(nameField.getText())) {
+                    nameField.setError("Name required");
+                    return;
+                }
+            }
+
+            List<Player> players = new ArrayList<>();
+            for (int i = 0; i < playerCount; i++) {
+                String name = nameFields.get(i).getText().toString();
+                String color;
+                if (teamMode) {
+                    if (i == 0 || i == 2) color = "RED";
+                    else color = "BLUE";
+                } else {
+                    color = colorSpinners.get(i).getSelectedItem().toString().toUpperCase();
+                }
+                players.add(new Player(i + 1, name, color));
+            }
+
+            if (teamMode) {
+                Team teamA = new Team("Team " + players.get(0).getToken().getColor());
+                Team teamB = new Team("Team " + players.get(1).getToken().getColor());
+                teamA.addMember(players.get(0));
+                teamA.addMember(players.get(2));
+                teamB.addMember(players.get(1));
+                teamB.addMember(players.get(3));
+            }
+
+            game = new Game(players, teamMode);
+            startGame();
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    private void startGame() {
+        if (game == null) {
+            showToast("Please select a game mode first");
+            return;
+        }
+
+        updateButtonStates(true);
+        setupBoard();
+        updateGameUI();
+    }
+
+    private void setupBoard() {
+        GridView gridView = findViewById(R.id.GridGame);
+        boardAdapter = new BoardAdapter(this, game.getBoard(), game);
+        gridView.setAdapter(boardAdapter);
+
+        gridView.setOnItemClickListener((parent, view, position, id) -> {
+            if (game != null && !game.isGameOver() && game.isWaitingForPlayerMove()) {
+                handlePlayerMove(position);
+            }
+        });
+    }
+
+    private void handlePlayerMove(int position) {
+        int row = position / 6;
+        int col = position % 6;
+
+        if (game.makeMove(row, col)) {
+            updateGameUI();
+
+            if (game.getCurrentRollValue() == 2 || game.getCurrentRollValue() == 12) {
+                showToast("Extra turn! Roll again");
+            }
+
+            if (game.isGameOver()) {
+                updateLeaderboard();
+                startReportActivity();
+            }
+        } else {
+            showToast("Invalid move! Try again");
+        }
+    }
+
+    private void updateLeaderboard() {
+        String winnerName;
+        if (teamMode) {
+            winnerName = game.getWinningTeam().getName();
+        } else {
+            winnerName = game.getWinner().getName();
+        }
+        LeaderboardActivity.saveWin(this, winnerName);
+    }
+
+
+    @SuppressLint("DefaultLocale")
+    private void startReportActivity() {
+        Intent intent = new Intent(this, ReportActivity.class);
+        String winnerMessage;
+        if (teamMode) {
+            winnerMessage = "Team " + game.getWinningTeam().getTeamColor() + " wins!";
+        } else {
+            winnerMessage = game.getWinner().getName() + " wins!";
+        }
+
+        intent.putExtra("WINNER_MESSAGE", winnerMessage);
+        intent.putExtra("ROUNDS_PLAYED", game.getRoundsPlayed());
+        intent.putExtra("TOKENS_PLACED", game.getTokensPlaced());
+        intent.putExtra("TOKENS_REMOVED", game.getTokensRemoved());
+        intent.putExtra("LONGEST_SEQUENCES", (Serializable) game.getLongestSequences());
+
+        startActivity(intent);
+        resetGame();
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void handleDiceRoll() {
+        game.rollDice();
+        List<Cell> validMoves = game.getValidMoves();
+
+        if (validMoves.isEmpty()) {
+            Toast.makeText(this, "No valid moves. Skipping turn.", Toast.LENGTH_SHORT).show();
+            game.advanceToNextPlayer();
+            game.setWaitingForPlayerMove(false);
+            updateGameUI();
+        } else {
+            animateDiceRoll(findViewById(R.id.btnrolldice), () -> {
+                updateGameUI();
+                int[] lastRoll = game.getLastRoll();
+                int total = game.getCurrentRollValue();
+                String message = getRollMessage(lastRoll, total);
+                showToast(message, Toast.LENGTH_LONG);
+            });
+        }
+    }
+
+    @SuppressLint("DefaultLocale")
+    private String getRollMessage(int[] lastRoll, int total) {
+        switch (total) {
+            case 10:
+                return String.format("%s rolled %s = %d (Defensive)\nRemove an opponent's token (not from 2 or 12 cells)",
+                        game.getCurrentPlayer().getName(), Arrays.toString(lastRoll), total);
+            case 11:
+                return String.format("%s rolled %s = %d (Wild)\nPlace token on any empty cell",
+                        game.getCurrentPlayer().getName(), Arrays.toString(lastRoll), total);
+            case 2:
+            case 12:
+                return String.format("%s rolled %s = %d\nPlace token and get extra turn!",
+                        game.getCurrentPlayer().getName(), Arrays.toString(lastRoll), total);
+            default:
+                return String.format("%s rolled %s = %d\nTap a %d to place your token",
+                        game.getCurrentPlayer().getName(), Arrays.toString(lastRoll), total, total);
+        }
+    }
+
+    private void updateGameUI() {
+        boardAdapter.notifyDataSetChanged();
+        updateCurrentPlayerDisplay();
+        updateRollResultDisplay();
+        updateButtonStates(true);
+    }
+
+    private void updateCurrentPlayerDisplay() {
+        Player current = game.getCurrentPlayer();
+        TextView currentPlayerText = findViewById(R.id.current_player_text);
+
+        @SuppressLint("DefaultLocale") String playerText = teamMode ?
+                String.format("%s - %s's Turn", current.getTeam().getName(), current.getName()) :
+                String.format("%s's Turn", current.getName());
+
+        currentPlayerText.setText(playerText);
+        currentPlayerText.setTextColor(getPlayerColor(current.getToken().getColor()));
+    }
+
+    private int getPlayerColor(String color) {
+        switch (color) {
+            case "RED": return Color.RED;
+            case "BLUE": return Color.BLUE;
+            case "GREEN": return Color.GREEN;
+            case "YELLOW": return Color.YELLOW;
+            default: return Color.BLACK;
+        }
+    }
+
+    private void updateRollResultDisplay() {
+        TextView rollResult = findViewById(R.id.roll_result);
+        if (game.getLastRoll() != null) {
+            rollResult.setText(String.format("Last roll: %s = %d",
+                    Arrays.toString(game.getLastRoll()), game.getCurrentRollValue()));
+        } else {
+            rollResult.setText("Last roll: -");
+        }
+    }
+
+    private void showGameEndDialog() {
+        String winnerMessage = teamMode ?
+                game.getWinningTeam().getName() + " wins!" :
+                game.getWinner().getName() + " wins!";
+
+        new AlertDialog.Builder(this)
+                .setTitle("Game Over")
+                .setMessage(winnerMessage)
+                .setPositiveButton("New Game", (dialog, which) -> resetGame())
+                .setCancelable(false)
+                .show();
+    }
+
+    private void showPauseDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Game Paused")
+                .setMessage("What would you like to do?")
+                .setPositiveButton("Resume", (dialog, which) -> dialog.dismiss())
+                .setNegativeButton("New Game", (dialog, which) -> resetGame())
+                .setNeutralButton("Exit", (dialog, which) -> finish())
+                .show();
+    }
+
+    private void resetGame() {
+        game = null;
+        teamMode = false;
+        resetUI();
+    }
+
+    private void resetUI() {
+        updateButtonStates(false);
+        ((GridView) findViewById(R.id.GridGame)).setAdapter(null);
+        ((TextView) findViewById(R.id.current_player_text)).setText("Current Player: -");
+        ((TextView) findViewById(R.id.roll_result)).setText("Last roll: -");
+        resetModeSelectionUI();
+    }
+
+    private void updateButtonStates(boolean gameStarted) {
+        findViewById(R.id.btnPlay).setEnabled(!gameStarted);
+        findViewById(R.id.btn2players).setEnabled(!gameStarted);
+        findViewById(R.id.btn3players).setEnabled(!gameStarted);
+        findViewById(R.id.button4).setEnabled(!gameStarted);
+        findViewById(R.id.btnrolldice).setEnabled(gameStarted && !game.isWaitingForPlayerMove());
+        findViewById(R.id.btnPause).setEnabled(gameStarted);
+    }
+
+    private void animateDiceRoll(Button rollButton, Runnable onComplete) {
+        rollButton.setEnabled(false);
+        ImageView dice1 = findViewById(R.id.dice1_image_view);
+        ImageView dice2 = findViewById(R.id.dice2_image_view);
+        Random random = new Random();
+
+        final int[] diceDrawables = {
+                R.drawable.dice_1, R.drawable.dice_2, R.drawable.dice_3,
+                R.drawable.dice_4, R.drawable.dice_5, R.drawable.dice_6
+        };
+
+        Animation anim = new RotateAnimation(0, 360,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(100);
+        anim.setRepeatCount(10);
+        anim.setInterpolator(new AccelerateDecelerateInterpolator());
+
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                rollButton.setEnabled(true);
+                int[] lastRoll = game.getLastRoll();
+                if (lastRoll != null && lastRoll.length == 2) {
+                    dice1.setImageResource(diceDrawables[lastRoll[0] - 1]);
+                    dice2.setImageResource(diceDrawables[lastRoll[1] - 1]);
+                }
+                onComplete.run();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                dice1.setImageResource(diceDrawables[random.nextInt(6)]);
+                dice2.setImageResource(diceDrawables[random.nextInt(6)]);
+            }
+        });
+
+        dice1.startAnimation(anim);
+        dice2.startAnimation(anim);
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showToast(String message, int duration) {
+        Toast.makeText(this, message, duration).show();
+    }
+}</pre>
+                </div>
+
+                <div id="sequence-frontvinstructions" class="code-viewer">
+    <pre class="code-text">package com.example.androidui2;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class InstructionsActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_instructions);
+
+        Button btnBack = findViewById(R.id.btnBack);
+        Button btnWatchVideo = findViewById(R.id.btnWatchVideo);
+        TextView instructionsText = findViewById(R.id.instructionsText);
+
+        btnBack.setOnClickListener(v -> finish());
+
+        btnWatchVideo.setOnClickListener(v -> {
+            String youtubeUrl = "https://youtu.be/3o3EWAIfU10?si=VfEePAYYV3tHl1V5";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeUrl));
+            intent.setPackage("com.google.android.youtube"); // Try to open in YouTube app
+            try {
+                startActivity(intent);
+            } catch (Exception e) {
+                // If YouTube app is not installed, open in browser
+                intent.setPackage(null);
+                startActivity(intent);
+            }
+        });
+    }
+}</pre>
+</div>
+
+
             </div>
         </div>
     </div>
@@ -1513,7 +3072,7 @@ public class Cell {
     <footer>
         <div class="footer-content">
             <p>&copy; 2024 Lundi Buswana. All Rights Reserved.</p>
-            <p>Designed by Lundi Buswana with Love <i class="fas fa-heart" style="color: var(--secondary);"></i> and <i class="fas fa-code" style="color: var(--primary);"></i></p>
+            <p>Designed by Lundi Buswana</p>
         </div>
     </footer>
 
@@ -1603,7 +3162,7 @@ public class Cell {
             // Optional: Reset form
             this.reset();
             
-            // Optional: Show confirmation
+            // Show confirmation
             alert('Opening WhatsApp with your message...');
         });
 
@@ -1667,11 +3226,41 @@ public class Cell {
         }, observerOptions);
         
         // Observe elements for animation
-        document.querySelectorAll('.skill-card, .project-card, .timeline-content, .contact-item').forEach(el => {
+        document.querySelectorAll('.skill-card, .project-card, .timeline-content, .contact-item, .philosophy-card, .layer').forEach(el => {
             el.style.opacity = 0;
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(el);
+        });
+
+        // Architecture visualization
+        function visualizeArchitecture() {
+            const layers = document.querySelectorAll('.layer');
+            layers.forEach((layer, index) => {
+                setTimeout(() => {
+                    layer.style.transform = 'translateX(0)';
+                    layer.style.opacity = '1';
+                }, index * 300);
+            });
+        }
+        
+        // Initialize architecture visualization
+        const architectureSection = document.getElementById('architecture');
+        const architectureObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    visualizeArchitecture();
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        architectureObserver.observe(architectureSection);
+        
+        // Set initial state for animation
+        document.querySelectorAll('.layer').forEach(layer => {
+            layer.style.transform = 'translateX(-50px)';
+            layer.style.opacity = '0';
+            layer.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
         });
     </script>
 </body>
