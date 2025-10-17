@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lundi Restaurant | Gourmet Dining & Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1d3557;
+            --light: #f8f9fa;
+            --text: #333;
+            --text-light: #6c757d;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #8ec5c7;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Search Section */
+        .search-section {
+            background-color: var(--secondary);
+            padding: 40px 0;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid var(--accent);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .price-range {
+            padding: 8px 12px;
+            border: 2px solid var(--accent);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* Featured Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .quantity {
+            font-weight: 600;
+        }
+
+        /* Cart Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .cart-items {
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 20px 0;
+            border-top: 2px solid #eee;
+        }
+
+        .checkout-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Authentication Modal */
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+        }
+
+        .auth-tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+        }
+
+        /* Payment Section */
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 120px;
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method:hover, .payment-method.active {
+            border-color: var(--primary);
+            background-color: rgba(230, 57, 70, 0.05);
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .payment-method.active .payment-icon {
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--secondary);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .testimonial-role {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b0b7c3;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b7c3;
+            font-size: 0.9rem;
+        }
+
+        /* Dashboard */
+        .dashboard-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dashboard-tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+        }
+
+        .dashboard-tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .dashboard-content {
+            display: none;
+        }
+
+        .dashboard-content.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .chart-container {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .order-history {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .order-table th, .order-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-table th {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status.completed {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+        }
+
+        .status.pending {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: #ff9800;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .user-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .filter-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>Lundi Restaurant</span>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#about">About</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="user-actions">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn" id="signupBtn">Sign Up</button>
+                </div>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Exquisite Dining Experience Delivered</h1>
+            <p>Discover the finest gourmet cuisine crafted by our master chefs, delivered right to your doorstep.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn">Order Now</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container search-container">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--dark);">Find Your Perfect Meal</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by meal name, description...">
+                <button class="btn" id="searchBtn">Search</button>
+            </div>
+            <div class="filter-options">
+                <div class="filter-group">
+                    <span class="filter-label">Price Range:</span>
+                    <select id="priceRange" class="price-range">
+                        <option value="all">All Prices</option>
+                        <option value="0-50">Under R50</option>
+                        <option value="50-100">R50 - R100</option>
+                        <option value="100-200">R100 - R200</option>
+                        <option value="200+">R200+</option>
+                    </select>
+                </div>
+                <button class="btn btn-outline" id="resetFilters">Reset Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Signature Dishes</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Lundi Restaurant Interior">
+                </div>
+                <div class="about-text">
+                    <h2>Our Culinary Journey</h2>
+                    <p>Founded in 2010, Lundi Restaurant has been redefining fine dining with our innovative approach to classic cuisine. Our chefs combine traditional techniques with modern creativity to deliver unforgettable flavors.</p>
+                    <p>We source only the finest ingredients from local farmers and trusted suppliers, ensuring every dish meets our exacting standards for quality and freshness.</p>
+                    <a href="#" class="btn">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"The best dining experience I've had this year! The Pap and Wors Stew was absolutely divine, and the delivery was prompt and professional."</p>
+                    <p class="testimonial-author">Aphelele Mbuthuma</p>
+                    <p class="testimonial-role">Food Critic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Lundi Restaurant</h3>
+                    <p>Exquisite dining experiences delivered to your door. Quality ingredients, masterful preparation, unforgettable flavors.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 1 Gomery Avenue, Food Omega Lodge</li>
+                        <li><i class="fas fa-phone"></i> +27 660 30 6575</li>
+                        <li><i class="fas fa-envelope"></i> lundibuswana@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for exclusive offers and updates.</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your email address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lundi Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal">
+            <div class="close-modal" id="closeCartModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="modal-title">Your Cart</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically loaded here -->
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">R0.00</span>
+            </div>
+            <div class="checkout-section">
+                <button class="btn" id="checkoutBtn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <div class="close-modal" id="closeAuthModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">Login</div>
+                <div class="auth-tab" data-tab="signup">Sign Up</div>
+            </div>
+            
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="#" style="color: var(--primary);">Forgot your password?</a>
+                </div>
+                <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <p>Or login with:</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 10px;">
+                        <button type="button" class="btn btn-outline" style="flex: 1;">
+                            <i class="fab fa-google"></i> Google
+                        </button>
+                        <button type="button" class="btn btn-outline" style="flex: 1;">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <form class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal">
+            <div class="close-modal" id="closeCheckoutModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="modal-title">Checkout</h2>
+            
+            <div class="form-group">
+                <label for="deliveryAddress">Delivery Address</label>
+                <input type="text" id="deliveryAddress" class="form-control" placeholder="Enter your delivery address" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Payment Method</label>
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="card">
+                        <div class="payment-icon">
+                            <i class="far fa-credit-card"></i>
+                        </div>
+                        <div>Credit Card</div>
+                    </div>
+                    <div class="payment-method" data-method="paypal">
+                        <div class="payment-icon">
+                            <i class="fab fa-paypal"></i>
+                        </div>
+                        <div>PayPal</div>
+                    </div>
+                    <div class="payment-method" data-method="payfast">
+                        <div class="payment-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>PayFast</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="cardPaymentForm">
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" class="form-control" placeholder="123">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cardholderName">Cardholder Name</label>
+                    <input type="text" id="cardholderName" class="form-control" placeholder="John Doe">
+                </div>
+            </div>
+            
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="checkoutTotal">R0.00</span>
+            </div>
+            
+            <div class="checkout-section">
+                <button class="btn" id="placeOrderBtn">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div class="modal-overlay" id="dashboardModal">
+        <div class="modal" style="max-width: 1000px;">
+            <div class="close-modal" id="closeDashboardModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="modal-title">My Account Dashboard</h2>
+            
+            <div class="dashboard-tabs">
+                <div class="dashboard-tab active" data-tab="overview">Overview</div>
+                <div class="dashboard-tab" data-tab="orders">Order History</div>
+                <div class="dashboard-tab" data-tab="profile">Profile</div>
+                <div class="dashboard-tab" data-tab="analytics">Analytics</div>
+            </div>
+            
+            <div class="dashboard-content active" id="overviewTab">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">R428.50</div>
+                        <div class="stat-label">Total Spent</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">4.8</div>
+                        <div class="stat-label">Avg. Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Pending Orders</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Order Activity</h3>
+                    <div style="height: 300px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <p>Order activity chart would be displayed here</p>
+                    </div>
+                </div>
+                
+                <div class="order-history">
+                    <h3>Recent Orders</h3>
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-7842</td>
+                                <td>Oct 12, 2023</td>
+                                <td>2 items</td>
+                                <td>R42.50</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-7831</td>
+                                <td>Oct 10, 2023</td>
+                                <td>3 items</td>
+                                <td>R67.80</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-7820</td>
+                                <td>Oct 8, 2023</td>
+                                <td>1 item</td>
+                                <td>R24.99</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="dashboard-content" id="ordersTab">
+                <div class="order-history">
+                    <h3>All Orders</h3>
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-7842</td>
+                                <td>Oct 12, 2023</td>
+                                <td>Umngqusho</td>
+                                <td>R42.50</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-7831</td>
+                                <td>Oct 10, 2023</td>
+                                <td>Amasi SA Traditional Meal, Amagwinya</td>
+                                <td>R67.80</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-7820</td>
+                                <td>Oct 8, 2023</td>
+                                <td>Ulusu</td>
+                                <td>R24.99</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-7805</td>
+                                <td>Oct 5, 2023</td>
+                                <td>Pap with Wors Stew, Amagwinya</td>
+                                <td>R38.75</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="dashboard-content" id="profileTab">
+                <div class="form-group">
+                    <label for="profileName">Full Name</label>
+                    <input type="text" id="profileName" class="form-control" value="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="profileEmail">Email</label>
+                    <input type="email" id="profileEmail" class="form-control" value="john.doe@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="profilePhone">Phone</label>
+                    <input type="text" id="profilePhone" class="form-control" value="+27 123 456 789">
+                </div>
+                <div class="form-group">
+                    <label for="profileAddress">Delivery Address</label>
+                    <textarea id="profileAddress" class="form-control" rows="3">123 Main Street, Johannesburg, 2000</textarea>
+                </div>
+                <button class="btn">Save Changes</button>
+            </div>
+            
+            <div class="dashboard-content" id="analyticsTab">
+                <div class="chart-container">
+                    <h3>Monthly Spending</h3>
+                    <div style="height: 300px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <p>Monthly spending chart would be displayed here</p>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Orders This Month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">R224.30</div>
+                        <div class="stat-label">Spent This Month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3.2</div>
+                        <div class="stat-label">Avg. Orders/Month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Traditional</div>
+                        <div class="stat-label">Favorite Cuisine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal-overlay" id="orderConfirmationModal">
+        <div class="modal" style="text-align: center; max-width: 500px;">
+            <div class="close-modal" id="closeOrderConfirmationModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div style="font-size: 4rem; color: #4caf50; margin-bottom: 20px;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="modal-title">Order Confirmed!</h2>
+            <p style="margin-bottom: 30px; color: var(--text-light);">Thank you for your order. Your food is being prepared and will be delivered soon.</p>
+            <div style="background-color: #f8f9fa; padding: 20px; border-radius: var(--radius); margin-bottom: 30px;">
+                <p><strong>Order ID:</strong> #ORD-7843</p>
+                <p><strong>Estimated Delivery:</strong> 30-45 minutes</p>
+                <p><strong>Total:</strong> <span id="confirmedOrderTotal">R0.00</span></p>
+            </div>
+            <button class="btn" id="viewOrderBtn">View Order Details</button>
+        </div>
+    </div>
+
+    <script>
+        // Currency configuration
+        const CURRENCY = {
+            symbol: 'R',
+            format: (amount) => {
+                return `R${amount.toFixed(2)}`;
+            }
+        };
+
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: "Umngqusho",
+                description: "Samp and Beans fine and delicously soft",
+                price: 89.99,
+                image: "https://capefusiontours.com/wp-content/uploads/2013/06/samp-and-beans2.jpg"
+            },
+            {
+                id: 2,
+                name: "Amasi SA Traditional Meal",
+                description: "Finest pap compannied with fermented sour milk",
+                price: 65.50,
+                image: "https://therealjenty.com/wp-content/uploads/2024/10/disadvantages-of-eating-amasi-scaled-e1729100264225-1536x1506.jpg"
+            },
+            {
+                id: 3,
+                name: "Ulusu",
+                description: "Traditional meal composed of inner sheep meat",
+                price: 120.75,
+                image: "https://i.ytimg.com/vi/sFr_JM2SGeQ/maxresdefault.jpg"
+            },
+            {
+                id: 4,
+                name: "Pap with Wors Stew",
+                description: "Papa ehamba ne voros",
+                price: 75.99,
+                image: "https://i.pinimg.com/originals/a7/5c/c5/a75cc5e85ecac88ddb8d62095fe57b93.jpg"
+            },
+            {
+                id: 5,
+                name: "Amagwinya",
+                description: "Amagwinya that went to private school",
+                price: 25.50,
+                image: "https://afternoonexpress.co.za/website/admin/UserFiles/Image/Cook%20a%20long/2021/Mei/Web_amagwinya.jpg"
+            },
+            {
+                id: 6,
+                name: "Dombolo with Chicken Stew",
+                description: "Soft steamed bread with rich chicken stew",
+                price: 95.99,
+                image: "https://cdn.foodfanatic.com/uploads/2018/01/mince-and-dumplings-photo-960x640.jpg"
+            }
+        ];
+
+        // Cart state
+        let cart = [];
+        let currentUser = null;
+        let filteredProducts = [...products];
+
+        // DOM Elements
+        const productsGrid = document.getElementById('productsGrid');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const closeCartModal = document.getElementById('closeCartModal');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.querySelector('.cart-count');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const authModal = document.getElementById('authModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const closeAuthModal = document.getElementById('closeAuthModal');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const authForms = document.querySelectorAll('.auth-form');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const closeCheckoutModal = document.getElementById('closeCheckoutModal');
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
+        const checkoutTotal = document.getElementById('checkoutTotal');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const orderConfirmationModal = document.getElementById('orderConfirmationModal');
+        const closeOrderConfirmationModal = document.getElementById('closeOrderConfirmationModal');
+        const confirmedOrderTotal = document.getElementById('confirmedOrderTotal');
+        const viewOrderBtn = document.getElementById('viewOrderBtn');
+        const dashboardModal = document.getElementById('dashboardModal');
+        const closeDashboardModal = document.getElementById('closeDashboardModal');
+        const dashboardTabs = document.querySelectorAll('.dashboard-tab');
+        const dashboardContents = document.querySelectorAll('.dashboard-content');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const priceRange = document.getElementById('priceRange');
+        const resetFilters = document.getElementById('resetFilters');
+
+        // Initialize the application
+        function init() {
+            renderProducts();
+            setupEventListeners();
+            checkAuthentication();
+        }
+
+        // Render products to the page
+        function renderProducts() {
+            productsGrid.innerHTML = '';
+            
+            if (filteredProducts.length === 0) {
+                productsGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; padding: 40px; color: var(--text-light);">No meals found matching your search criteria.</p>';
+                return;
+            }
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">${CURRENCY.format(product.price)}</div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus" data-id="${product.id}">-</button>
+                                <span class="quantity" data-id="${product.id}">0</span>
+                                <button class="quantity-btn plus" data-id="${product.id}">+</button>
+                            </div>
+                            <button class="btn add-to-cart" data-id="${product.id}">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // Search and filter functionality
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const priceFilter = priceRange.value;
+            
+            filteredProducts = products.filter(product => {
+                // Search filter
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    product.description.toLowerCase().includes(searchTerm);
+                
+                // Price filter
+                let matchesPrice = true;
+                if (priceFilter !== 'all') {
+                    if (priceFilter === '0-50') {
+                        matchesPrice = product.price <= 50;
+                    } else if (priceFilter === '50-100') {
+                        matchesPrice = product.price > 50 && product.price <= 100;
+                    } else if (priceFilter === '100-200') {
+                        matchesPrice = product.price > 100 && product.price <= 200;
+                    } else if (priceFilter === '200+') {
+                        matchesPrice = product.price > 200;
+                    }
+                }
+                
+                return matchesSearch && matchesPrice;
+            });
+            
+            renderProducts();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Cart functionality
+            cartIcon.addEventListener('click', () => openModal(cartModal));
+            closeCartModal.addEventListener('click', () => closeModal(cartModal));
+            checkoutBtn.addEventListener('click', () => {
+                closeModal(cartModal);
+                openModal(checkoutModal);
+            });
+
+            // Authentication
+            loginBtn.addEventListener('click', () => openModal(authModal));
+            signupBtn.addEventListener('click', () => openModal(authModal));
+            closeAuthModal.addEventListener('click', () => closeModal(authModal));
+            
+            // Auth tabs
+            authTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.getAttribute('data-tab');
+                    switchAuthTab(tabName);
+                });
+            });
+            
+            // Auth forms
+            loginForm.addEventListener('submit', handleLogin);
+            signupForm.addEventListener('submit', handleSignup);
+            
+            // Checkout
+            closeCheckoutModal.addEventListener('click', () => closeModal(checkoutModal));
+            placeOrderBtn.addEventListener('click', handlePlaceOrder);
+            
+            // Payment methods
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', () => {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    method.classList.add('active');
+                });
+            });
+            
+            // Order confirmation
+            closeOrderConfirmationModal.addEventListener('click', () => closeModal(orderConfirmationModal));
+            viewOrderBtn.addEventListener('click', () => {
+                closeModal(orderConfirmationModal);
+                openModal(dashboardModal);
+                switchDashboardTab('orders');
+            });
+            
+            // Dashboard
+            closeDashboardModal.addEventListener('click', () => closeModal(dashboardModal));
+            
+            // Dashboard tabs
+            dashboardTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.getAttribute('data-tab');
+                    switchDashboardTab(tabName);
+                });
+            });
+            
+            // Search and filter
+            searchInput.addEventListener('input', filterProducts);
+            searchBtn.addEventListener('click', filterProducts);
+            priceRange.addEventListener('change', filterProducts);
+            resetFilters.addEventListener('click', () => {
+                searchInput.value = '';
+                priceRange.value = 'all';
+                filterProducts();
+            });
+            
+            // Close modals when clicking outside
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal-overlay')) {
+                    closeAllModals();
+                }
+            });
+            
+            // Add to cart and quantity buttons (delegated events)
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('add-to-cart')) {
+                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    addToCart(productId);
+                }
+                
+                if (e.target.classList.contains('plus')) {
+                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    updateQuantity(productId, 1);
+                }
+                
+                if (e.target.classList.contains('minus')) {
+                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    updateQuantity(productId, -1);
+                }
+            });
+        }
+
+        // Cart functions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartDisplay();
+            updateQuantityDisplay(productId);
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+            }
+            
+            updateCartDisplay();
+            updateQuantityDisplay(productId);
+        }
+
+        function updateCartDisplay() {
+            // Update cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; padding: 20px;">Your cart is empty</p>';
+            } else {
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">${CURRENCY.format(item.price)}</div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+            }
+            
+            // Update cart total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = CURRENCY.format(total);
+            checkoutTotal.textContent = CURRENCY.format(total);
+            confirmedOrderTotal.textContent = CURRENCY.format(total);
+            
+            // Update cart count
+            const itemCount = cart.reduce((count, item) => count + item.quantity, 0);
+            cartCount.textContent = itemCount;
+        }
+
+        function updateQuantityDisplay(productId) {
+            const quantityElement = document.querySelector(`.quantity[data-id="${productId}"]`);
+            const item = cart.find(item => item.id === productId);
+            quantityElement.textContent = item ? item.quantity : 0;
+        }
+
+        // Modal functions
+        function openModal(modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        // Authentication functions
+        function switchAuthTab(tabName) {
+            authTabs.forEach(tab => {
+                if (tab.getAttribute('data-tab') === tabName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            authForms.forEach(form => {
+                if (form.id === `${tabName}Form`) {
+                    form.classList.add('active');
+                } else {
+                    form.classList.remove('active');
+                }
+            });
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation
+            if (email && password) {
+                currentUser = {
+                    name: 'John Doe',
+                    email: email
+                };
+                
+                updateUserInterface();
+                closeModal(authModal);
+                showNotification('Login successful!', 'success');
+            } else {
+                showNotification('Please fill in all fields', 'error');
+            }
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            
+            // Simple validation
+            if (name && email && password && confirmPassword) {
+                if (password !== confirmPassword) {
+                    showNotification('Passwords do not match', 'error');
+                    return;
+                }
+                
+                currentUser = {
+                    name: name,
+                    email: email
+                };
+                
+                updateUserInterface();
+                closeModal(authModal);
+                showNotification('Account created successfully!', 'success');
+            } else {
+                showNotification('Please fill in all fields', 'error');
+            }
+        }
+
+        function checkAuthentication() {
+            // In a real app, this would check for a stored token
+            // For demo purposes, we'll just check if currentUser is set
+            updateUserInterface();
+        }
+
+        function updateUserInterface() {
+            const userActions = document.querySelector('.user-actions');
+            
+            if (currentUser) {
+                userActions.innerHTML = `
+                    <button class="btn btn-outline" id="dashboardBtn">
+                        <i class="fas fa-user"></i> My Account
+                    </button>
+                    <button class="btn" id="logoutBtn">Logout</button>
+                `;
+                
+                document.getElementById('dashboardBtn').addEventListener('click', () => openModal(dashboardModal));
+                document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+            } else {
+                userActions.innerHTML = `
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn" id="signupBtn">Sign Up</button>
+                `;
+                
+                document.getElementById('loginBtn').addEventListener('click', () => openModal(authModal));
+                document.getElementById('signupBtn').addEventListener('click', () => openModal(authModal));
+            }
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            updateUserInterface();
+            showNotification('Logged out successfully', 'success');
+        }
+
+        // Dashboard functions
+        function switchDashboardTab(tabName) {
+            dashboardTabs.forEach(tab => {
+                if (tab.getAttribute('data-tab') === tabName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            dashboardContents.forEach(content => {
+                if (content.id === `${tabName}Tab`) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+
+        // Order functions
+        function handlePlaceOrder() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty', 'error');
+                return;
+            }
+            
+            if (!currentUser) {
+                showNotification('Please login to place an order', 'error');
+                openModal(authModal);
+                return;
+            }
+            
+            // In a real app, this would send the order to a server
+            // For demo purposes, i'll just show the confirmation
+            closeModal(checkoutModal);
+            openModal(orderConfirmationModal);
+            
+            // Clear the cart
+            cart = [];
+            updateCartDisplay();
+            products.forEach(product => updateQuantityDisplay(product.id));
+        }
+
+        // Notification function
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background-color: ${type === 'success' ? '#4caf50' : '#f44336'};
+                color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 3000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
